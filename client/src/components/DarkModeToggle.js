@@ -4,7 +4,7 @@ import DarkModeToggle from 'react-dark-mode-toggle';
 const DarkModeToggleComponent = ({ onToggle, isDarkMode }) => {
 
     return (
-        <div className="absolute top-4 right-4 z-10">
+        <div className=" toggle-container">
             <DarkModeToggle
                 onChange={onToggle}
                 checked={isDarkMode}

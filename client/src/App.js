@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "./App.css"
-import heroVideoLight from '../src/media/hero_light.mp4';
-import heroVideoDark from '../src/media/hero_dark.mp4';
 import Navbar from './components/Navbar'
-import MainLayout from './components/MainLayout';
 import Home from './components/Home';
 import About from './components/About';
 import Services from './components/Services';
 import Contact from './components/Contact';
+import DarkModeToggleComponent from './components/DarkModeToggle';
 
 const App = () => {
-  const storedDarkMode = localStorage.getItem('darkMode');
-  const [isDarkMode, setIsDarkMode] = useState(storedDarkMode === 'true');
+  const localDarkMode = JSON.parse(localStorage.getItem('isDarkMode'));
+  const [isDarkMode, setIsDarkMode] = useState(localDarkMode || false);
 
   useEffect(() => {
-    localStorage.setItem('darkMode', isDarkMode);
+    // Save mode to localStorage whenever it changes
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
+
+  useEffect(() => {
+    // Apply class to body
+    if (isDarkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
   }, [isDarkMode]);
 
   const handleDarkModeToggle = () => {
@@ -23,17 +31,16 @@ const App = () => {
   };
 
   return (
-    <div className={`relative ${isDarkMode ? 'dark' : ''}`}>
+    <div className={`body ${isDarkMode ? 'dark' : ''}`}>
       <BrowserRouter>
         <Navbar />
-        <MainLayout videoSource={isDarkMode ? heroVideoDark : heroVideoLight} onToggle={handleDarkModeToggle} isDarkMode={isDarkMode}>
-          <Routes>
-            <Route path="/" element={<Home isDarkMode={isDarkMode} />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </MainLayout>
+        <DarkModeToggleComponent onToggle={handleDarkModeToggle} isDarkMode={isDarkMode} />
+        <Routes>
+          <Route key={isDarkMode} path="/" element={<Home isDarkMode={isDarkMode} />} />
+          <Route key={isDarkMode} path="/about" element={<About isDarkMode={isDarkMode} />} />
+          <Route key={isDarkMode} path="/services" element={<Services isDarkMode={isDarkMode} />} />
+          <Route key={isDarkMode} path="/contact" element={<Contact isDarkMode={isDarkMode} />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Services = () => {
+const Services = ({ isDarkMode }) => {
     return (
-        <div>
+        <div className={`page ${isDarkMode ? 'dark' : ''}`}>
             <h2>Services</h2>
         </div>
     )
 }
 
-export default Services
+export default Services;

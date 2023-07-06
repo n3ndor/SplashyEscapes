@@ -1,3 +1,38 @@
+body,
+.page {
+    background-color: aqua;
+    color: black;
+}
+
+body.dark,
+.page.dark {
+    background-color: darkgrey;
+    color: blue;
+}
+
+body,
+.about,
+.services {
+    background-color: aqua;
+    color: black;
+}
+
+body.dark,
+.about.dark,
+.services.dark {
+    background-color: darkgrey;
+    color: blue;
+}
+
+.contact .content {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
 /* HERO */
 
 .hero {
@@ -7,7 +42,7 @@
     overflow: hidden;
 }
 
-.hero .video-container {
+.video-container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -17,7 +52,7 @@
     overflow: hidden;
 }
 
-.hero video {
+video {
     position: absolute;
     top: 0;
     left: 0;
@@ -27,8 +62,8 @@
     z-index: 0;
 }
 
-.hero .toggle-container {
-    position: absolute;
+.toggle-container {
+    position: fixed;
     top: 2rem;
     right: 2rem;
     z-index: 100;
@@ -44,12 +79,14 @@
     text-align: center;
 }
 
+/* Navbar */
 .navbar {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 60px;
+    height: 5vh;
+    /* Changed from 60px to 5vh */
     background-color: transparent;
     transition: bottom 0.3s ease;
     z-index: 10;
@@ -59,7 +96,8 @@
 }
 
 .navbar.hidden {
-    bottom: -60px;
+    bottom: -5vh;
+    /* Changed from -60px to -5vh */
 }
 
 .navbar.top {
@@ -76,7 +114,8 @@
 }
 
 .navbar ul li {
-    margin-right: 20px;
+    margin-right: 2vw;
+    /* Changed from 20px to 2vw */
 }
 
 .navbar ul li:last-child {
@@ -86,5 +125,6 @@
 .navbar ul li a {
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.5rem;
+    /* Changed from 18px to 1.2vw */
 }

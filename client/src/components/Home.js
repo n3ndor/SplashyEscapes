@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { useTransition, animated } from 'react-spring';
+import heroVideoLight from '../media/hero_light.mp4';
+import heroVideoDark from '../media/hero_dark.mp4';
 
 const Home = ({ isDarkMode }) => {
     const text = 'Splashy Escapes';
+    const videoSource = isDarkMode ? heroVideoDark : heroVideoLight;
 
     useEffect(() => {
         const h2 = document.querySelector('.animate-text');
@@ -19,11 +22,16 @@ const Home = ({ isDarkMode }) => {
     });
 
     return (
-        <h2 className="animate-text animated">
-            {transitions((style, letter) => (
-                <animated.span style={style}>{letter}</animated.span>
-            ))}
-        </h2>
+        <div className="hero">
+            <div className="video-container">
+                <video src={videoSource} autoPlay muted loop playsInline />
+                <h2 className="animate-text animated">
+                    {transitions((style, letter) => (
+                        <animated.span style={style}>{letter}</animated.span>
+                    ))}
+                </h2>
+            </div>
+        </div>
     );
 };
 
