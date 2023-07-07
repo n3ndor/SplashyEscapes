@@ -9,8 +9,11 @@ body.dark,
 .page.dark {
     background-color: #000000;
     background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
-
     color: white;
+}
+
+body.dark video {
+    filter: brightness(85%);
 }
 
 body,
@@ -18,7 +21,6 @@ body,
 .services {
     background-color: #63a4ff;
     background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%);
-    color: black;
 }
 
 body.dark,
@@ -26,7 +28,6 @@ body.dark,
 .services.dark {
     background-color: #2b4162;
     background-image: linear-gradient(315deg, #2b4162 0%, #12100e 74%);
-    color: blue;
 }
 
 .contact .content {
@@ -125,9 +126,15 @@ video {
 }
 
 .navbar ul li a {
-    color: white;
+    color: black;
+
     text-decoration: none;
     font-size: 1.5rem;
+}
+
+body.dark .navbar a {
+    color: white;
+    text-shadow: #2b4162;
 }
 
 /* About */

@@ -36,16 +36,16 @@ const Navbar = () => {
         <div className={`navbar ${navbarPosition}`}>
             <ul>
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/"><h3>Home</h3></Link>
                 </li>
                 <li>
-                    <Link to="/about">About</Link>
+                    <Link to="/about"><h3>About</h3></Link>
                 </li>
                 <li>
-                    <Link to="/services">Services</Link>
+                    <Link to="/services"><h3>Services</h3></Link>
                 </li>
                 <li>
-                    <Link to="/contact">Contact</Link>
+                    <Link to="/contact"><h3>Contact</h3></Link>
                 </li>
             </ul>
         </div>
