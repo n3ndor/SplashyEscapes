@@ -137,24 +137,29 @@ video {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto;
     gap: 1rem;
+    padding-bottom: 5rem;
 }
 
 .grid-container video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    max-height: 80vh;
+    max-height: 90vh;
 }
 
 .grid-item {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
+}
+
+.no-padding {
+    padding: 0;
 }
 
 .grid-item.full-width {
     grid-column: 1 / -1;
-
 }
 
 .grid-item.text-third-right {
@@ -191,16 +196,5 @@ video {
     .grid-item.two-thirds-left,
     .grid-item.full-width {
         grid-column: 1 / -1;
-    }
-}
-
-@media (max-width: 480px) {
-    .grid-container {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .grid-item.text {
-        grid-row: span 1;
-        /* Span one row */
     }
 }
