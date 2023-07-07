@@ -16,20 +16,20 @@ const About = ({ isDarkMode }) => {
                 <div className="grid-item full-width">
                     <p>Text 1...</p>
                 </div>
-                <div className="grid-item text">
-                    <p>Text 2...</p>
-                </div>
                 <div className="grid-item two-thirds">
                     <video src={holdVideo} autoPlay loop muted />
+                </div>
+                <div className="grid-item text">
+                    <p>Text 2...</p>
                 </div>
                 <div className="grid-item full-width">
                     <p>Text 3...</p>
                 </div>
                 <div className="grid-item text">
-                    <p>Text 4...</p>
-                </div>
-                <div className="grid-item two-thirds">
                     <video src={chillVideo} autoPlay loop muted />
+                </div>
+                <div className="grid-item text">
+                    <p>Text 4...</p>
                 </div>
                 <div className="grid-item full-width">
                     <p>Text 5...</p>
