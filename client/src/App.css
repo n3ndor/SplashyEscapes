@@ -134,8 +134,8 @@ video {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
     gap: 1rem;
 }
 
@@ -143,6 +143,7 @@ video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    max-height: 80vh;
 }
 
 .grid-item {
@@ -153,18 +154,23 @@ video {
 
 .grid-item.full-width {
     grid-column: 1 / -1;
-    height: 30%;
-    /* From the 1st line to the last line */
+
 }
 
-.grid-item.text {
+.grid-item.text-third-right {
+    grid-column: 3 / 4;
+}
+
+.grid-item.two-thirds-right {
+    grid-column: 1 / 3;
+}
+
+.grid-item.text-third-left {
     grid-column: 1 / 2;
-    /* Only the first column */
 }
 
-.grid-item.two-thirds {
+.grid-item.two-thirds-left {
     grid-column: 2 / 4;
-    /* Starts at the second column and spans to the third */
 }
 
 .grid-container video {
@@ -176,12 +182,15 @@ video {
 
 @media (max-width: 768px) {
     .grid-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 
-    .grid-item.text {
-        grid-row: span 1;
-        /* Span one row */
+    .grid-item.text-third-right,
+    .grid-item.two-thirds-right,
+    .grid-item.text-third-left,
+    .grid-item.two-thirds-left,
+    .grid-item.full-width {
+        grid-column: 1 / -1;
     }
 }
 
