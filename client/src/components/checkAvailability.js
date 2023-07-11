@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
-const mockData = {
-  Monday: { spaces: 10, start: "10:00 AM", duration: "2 hours" },
-  Tuesday: { spaces: 7, start: "11:00 AM", duration: "3 hours" },
-  Wednesday: { spaces: 5, start: "12:00 PM", duration: "2 hours" },
-  Thursday: { spaces: 12, start: "9:00 AM", duration: "2 hours" },
-  Friday: { spaces: 15, start: "10:00 AM", duration: "2 hours" },
-  Saturday: { spaces: 20, start: "11:00 AM", duration: "3 hours" },
-  Sunday: { spaces: 5, start: "12:00 PM", duration: "2 hours" },
-};
-
 const CheckAvailability = ({ onClose, isDarkMode, availability }) => {
   const [selectedDay, setSelectedDay] = useState(null);
+
+  const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
 
   const handleDayClick = (day) => {
     setSelectedDay(selectedDay === day ? null : day);
@@ -23,23 +23,28 @@ const CheckAvailability = ({ onClose, isDarkMode, availability }) => {
         <button className="closeButton" onClick={onClose}>
           X
         </button>
-        {Object.keys(availability).map((day) => (
-          <div key={day}>
-            <button
-              className={`dayButton ${selectedDay === day ? "selected" : ""}`}
-              onClick={() => handleDayClick(day)}
-            >
-              {day}
-            </button>
-            {selectedDay === day && (
-              <div className="availability-details">
-                <p>Free spaces: {mockData[selectedDay].spaces}</p>
-                <p>Starting hour: {mockData[selectedDay].start}</p>
-                <p>Duration: {mockData[selectedDay].duration}</p>
+        {days.map(
+          (day, idx) =>
+            availability[idx] && ( // Only render the day if there is an availability for it
+              <div key={day}>
+                <button
+                  className={`dayButton ${
+                    selectedDay === idx ? "selected" : ""
+                  }`}
+                  onClick={() => handleDayClick(idx)}
+                >
+                  {day}
+                </button>
+                {selectedDay === idx && (
+                  <div className="availability-details">
+                    <p>Free spaces: {availability[selectedDay].spaces}</p>
+                    <p>Starting hour: {availability[selectedDay].start_time}</p>
+                    <p>Duration: {availability[selectedDay].duration}</p>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        ))}
+            )
+        )}
       </div>
     </div>
   );
