@@ -123,7 +123,11 @@ const Services = ({ isDarkMode }) => {
         </div>
       </div>
       {availability && (
-        <CheckAvailability onClose={checkHandle} availability={availability} />
+        <CheckAvailability
+          onClose={checkHandle}
+          availability={availability}
+          isDarkMode={isDarkMode}
+        />
       )}
     </div>
   );

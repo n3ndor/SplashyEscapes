@@ -72,7 +72,7 @@ video {
     position: fixed;
     top: 2rem;
     right: 2rem;
-    z-index: 100;
+    z-index: 9999;
 }
 
 .hero h2 {
@@ -303,4 +303,9 @@ img {
     padding: 10px 0;
     color: black;
     border-bottom: 1px solid #ddd;
+}
+
+.dayButton.dark,
+.availability-details.dark {
+    color: white;
 }

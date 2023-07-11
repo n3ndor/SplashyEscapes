@@ -25,21 +25,36 @@ const CheckAvailability = ({ onClose, isDarkMode, availability }) => {
         </button>
         {days.map(
           (day, idx) =>
-            availability[idx] && ( // Only render the day if there is an availability for it
+            availability.find((avail) => avail.day === day) && ( // Only render the day if there is an availability for it
               <div key={day}>
                 <button
                   className={`dayButton ${
-                    selectedDay === idx ? "selected" : ""
-                  }`}
-                  onClick={() => handleDayClick(idx)}
+                    selectedDay === day ? "selected" : ""
+                  } ${isDarkMode ? "dark" : ""}`}
+                  onClick={() => handleDayClick(day)}
                 >
                   {day}
                 </button>
-                {selectedDay === idx && (
-                  <div className="availability-details">
-                    <p>Free spaces: {availability[selectedDay].spaces}</p>
-                    <p>Starting hour: {availability[selectedDay].start_time}</p>
-                    <p>Duration: {availability[selectedDay].duration}</p>
+                {selectedDay === day && (
+                  <div
+                    className={`availability-details ${
+                      isDarkMode ? "dark" : ""
+                    }`}
+                  >
+                    {(() => {
+                      const selectedDayAvailability = availability.find(
+                        (avail) => avail.day === selectedDay
+                      );
+                      return (
+                        <>
+                          <p>Free spaces: {selectedDayAvailability.spaces}</p>
+                          <p>
+                            Starting hour: {selectedDayAvailability.start_time}
+                          </p>
+                          <p>Duration: {selectedDayAvailability.duration}</p>
+                        </>
+                      );
+                    })()}
                   </div>
                 )}
               </div>
