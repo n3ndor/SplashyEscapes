@@ -33,6 +33,7 @@ body.dark,
 .contact .content {
     color: white;
     position: absolute;
+    text-shadow: 2px 2px 4px #000000;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -71,18 +72,31 @@ video {
 .toggle-container {
     position: fixed;
     top: 2rem;
-    right: 2rem;
-    z-index: 100;
+    right: 3rem;
+    z-index: 1000;
 }
 
-.hero h2 {
+.hero h2,
+h4 {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
+    text-shadow: 2px 2px 4px #000000;
     font-size: 2rem;
     text-align: center;
+}
+
+.hero h4 {
+    top: 60%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    color: red;
+    text-shadow: 2px 2px 4px #000000;
+    z-index: 2;
+    /* make sure the text is above the video */
+    animation: fade 3s infinite;
 }
 
 /* Navbar */

@@ -18,11 +18,22 @@ const CheckAvailability = ({ onClose, isDarkMode, availability }) => {
   };
 
   return (
-    <div className={`overlay ${isDarkMode ? "dark" : ""}`}>
+    <div
+      className={`overlay ${isDarkMode ? "dark" : ""}`}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      {/* onClick = closes the window if clicking next to it */}
       <div className={`checkAvailability ${isDarkMode ? "dark" : ""}`}>
-        <button className="closeButton" onClick={onClose}>
-          X
+        <button
+          className="closeButton"
+          onClick={onClose}
+          style={{ "color": "white" }}
+        >
+          X {/* close Window */}
         </button>
+
         {days.map(
           (day, idx) =>
             availability.find((avail) => avail.day === day) && ( // Only render the day if there is an availability for it
