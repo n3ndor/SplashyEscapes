@@ -5,7 +5,6 @@ import babyVideo from "../media/baby.mp4";
 import trainingVideo from "../media/training.mp4";
 import saunaImage from "../media/sauna.jpg";
 import waterWorldImage from "../media/water_world.jpg";
-import divingImage from "../media/diving.jpg";
 
 import CheckAvailability from "./checkAvailability";
 
@@ -15,12 +14,31 @@ const Services = ({ isDarkMode }) => {
   const fetchAvailability = (serviceId) => {
     fetch(`http://localhost:5000/api/services/${serviceId}/availability`)
       .then((response) => response.json())
-      .then((data) => setAvailability(data));
+      .then((data) => {
+        setAvailability(data);
+        pauseAllVideos();
+      });
   };
 
   const checkHandle = () => {
     setAvailability(!availability);
+    playAllVideos();
   };
+
+  const pauseAllVideos = () => {
+    const videos = document.querySelectorAll("video");
+    videos.forEach((video) => {
+      if (!video.paused) video.pause();
+    });
+  };
+
+  const playAllVideos = () => {
+    const videos = document.querySelectorAll("video");
+    videos.forEach((video) => {
+      if (video.paused) video.play();
+    });
+  };
+
   return (
     <div className={`page ${isDarkMode ? "dark" : ""}`}>
       <div className="grid-container ">
@@ -118,7 +136,6 @@ const Services = ({ isDarkMode }) => {
           <div className="images">
             <img src={saunaImage} alt="Sauna" />
             <img src={waterWorldImage} alt="Water world" />
-            <img src={divingImage} alt="Diving" />
           </div>
         </div>
       </div>

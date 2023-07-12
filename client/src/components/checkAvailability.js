@@ -47,11 +47,16 @@ const CheckAvailability = ({ onClose, isDarkMode, availability }) => {
                       );
                       return (
                         <>
-                          <p>Free spaces: {selectedDayAvailability.spaces}</p>
+                          <p>
+                            Free spaces: {selectedDayAvailability.spaces}{" "}
+                            persons
+                          </p>
                           <p>
                             Starting hour: {selectedDayAvailability.start_time}
                           </p>
-                          <p>Duration: {selectedDayAvailability.duration}</p>
+                          <p>
+                            Duration: {selectedDayAvailability.duration} hours
+                          </p>
                         </>
                       );
                     })()}

@@ -72,7 +72,7 @@ video {
     position: fixed;
     top: 2rem;
     right: 2rem;
-    z-index: 9999;
+    z-index: 100;
 }
 
 .hero h2 {
@@ -197,6 +197,7 @@ body.dark .navbar a {
 .images {
 
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -251,13 +252,16 @@ img {
     color: white;
 }
 
+/* #63a4ff 0%, #83eaf1 */
 .checkAvailability {
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 20%;
-    background: linear-gradient(to top right, #63a4ff 0%, #83eaf1 100%);
+    width: 40%;
+    height: 35%;
+    background: #5586ca;
+    color: white;
     padding: 2em;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     z-index: 1000;
@@ -266,7 +270,6 @@ img {
 
 .checkAvailability.dark {
     background: linear-gradient(to top right, #2b4162 0%, #12100e 100%);
-    color: white;
 }
 
 .overlay {
@@ -302,10 +305,29 @@ img {
 .availability-details {
     padding: 10px 0;
     color: black;
+    font-weight: bold;
     border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 
 .dayButton.dark,
 .availability-details.dark {
     color: white;
+}
+
+/* Contact*/
+
+.contactLinks {
+    width: 80%;
+    display: flex;
+    align-items: center;
+
+
+}
+
+.contact a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    text-shadow: 5px 5px 5px #000000;
 }
