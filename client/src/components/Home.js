@@ -19,7 +19,7 @@ const Home = ({ isDarkMode }) => {
   useEffect(() => {
     const toggle = setInterval(() => {
       setShowText((prevShowText) => !prevShowText);
-    }, 3000);
+    }, 5000);
     return () => clearInterval(toggle);
   }, []);
 
